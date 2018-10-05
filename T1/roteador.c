@@ -116,7 +116,7 @@ void imprimir_msg(BDMsg *msg, int roteador, int *novas_msg){	// Mostra todas as 
 		printf(" Nenhuma mensagem encontrada!\n");
 	}
 	while(msg != NULL){
-		printf(" -> %s\n", msg->mensagem);
+		printf(" -> %s\t <- de %d\n", msg->mensagem, msg->source);
 		msg = msg->prox;
 	}
 	printf("\n Pressione ENTER para continuar... ");
@@ -266,7 +266,7 @@ void *receptor(void * arg){		// Recebe os pacotes
 			strcat(log, aux);
 			strcat(log, "]!");
 			add_log(&info->log ,log);
-			add_msg(&info->msg, pacote.mensagem);	
+			add_msg(&info->msg, pacote.mensagem, pacote.idOrigem);	
 			info->novas_msg++;
 			if(pthread_mutex_trylock(&mutex) == 0){		// Atualiza o número de mensagens recebidas no menu
 				menu(info->novas_msg, id_roteador, roteadores[id_roteador].ip, roteadores[id_roteador].porta);

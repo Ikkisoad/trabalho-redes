@@ -208,7 +208,7 @@ void enviar(ii tabela[N_ROT], Router roteadores[N_ROT], TPacote pacote, int id_r
 	system("clear");
 	imprimir_roteadores(roteadores);
 	printf(" Informe o ID do roteador destino → ");
-	while(scanf("%d", &r_destino) != 1 || r_destino >= N_ROT){		// Lê o ID do roteador destino
+	while(scanf("%d", &r_destino) != 1 || r_destino >= N_ROT || r_destino < 0){		// Lê o ID do roteador destino
 		printf(" Informe o ID do roteador destino → ");
 		getchar();
 	}

@@ -38,6 +38,7 @@ typedef struct BD_Log{		// Estrutura dos LOGs
 
 typedef struct BD_Msg{		// Estrutura das mensagens
 	char mensagem[MSG_SIZE];
+	int source;
 	struct BD_Msg *prox;
 }BDMsg;
 
@@ -56,7 +57,7 @@ void criar_tabela_roteamento(ii tabela[N_ROT], int roteador);
 
 void add_log(BDLog **log, char msg[50]);
 void imprimir_log(BDLog *log, int roteador);
-void add_msg(BDMsg **mensagens, char msg[50]);
+void add_msg(BDMsg **mensagens, char msg[50], int sender);
 void imprimir_msg(BDMsg *msg, int roteador, int *novas_msg);
 void imprimir_roteadores(Router roteadores[N_ROT]);
 int char2int(char const *str);
